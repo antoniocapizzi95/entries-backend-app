@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Entry } from '../models/entry.model';
-import { EntryRepository } from '../repository/entry/mocks/entry.repository';
+//import { EntryRepository } from '../repository/entry/mocks/entry.repository';
+import { EntryRepository } from '../repository/entry/mongo/entry.repository';
 import { EntryListPagination } from '../models/entry-list-pagination.model';
 import { EntryList } from 'src/models/entry-list.model';
 
@@ -15,8 +16,7 @@ export class EntriesService {
     }
 
     async findEntryById(id: string): Promise<Entry> {
-        const idNum = parseInt(id, 10);
-        return this.entryRepository.findById(idNum);
+        return this.entryRepository.findById(id);
     }
 
     async createEntry(entry: Entry): Promise<Entry> {
@@ -25,13 +25,11 @@ export class EntriesService {
     }
 
     async updateEntry(id: string, entryData: Partial<Entry>): Promise<Entry> {
-        const idNum = parseInt(id, 10);
-        return this.entryRepository.update(idNum, entryData);
+        return this.entryRepository.update(id, entryData);
     }
 
     async deleteEntry(id: string) {
-        const idNum = parseInt(id, 10);
-        this.entryRepository.delete(idNum);
+        this.entryRepository.delete(id);
     }
 
     private mapPagination(entriesList: EntryList[], page: number, limit: number, total: number): EntryListPagination {

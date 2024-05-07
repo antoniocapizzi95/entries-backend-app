@@ -7,7 +7,7 @@ import { EntryList } from "../../../models/entry-list.model";
 export class EntryRepository implements IEntryRepository {
     private entries: Entry[] = [
         {
-            "id": 1,
+            "id": "1",
             "user": "Joe Smith",
             "country": "UK",
             "ip": "1.2.3.4",
@@ -25,7 +25,7 @@ export class EntryRepository implements IEntryRepository {
             "type": "WEB"
         },
         {
-            "id": 2,
+            "id": "2",
             "user": "Jack Black",
             "country": "USA",
             "ip": "11.22.33.44",
@@ -48,7 +48,7 @@ export class EntryRepository implements IEntryRepository {
             "type": "WEB"
         },
         {
-            "id": 3,
+            "id": "3",
             "user": "Marco Rossi",
             "country": "Italy",
             "ip": "21.32.43.64",
@@ -75,24 +75,18 @@ export class EntryRepository implements IEntryRepository {
     async findAll(page: number, limit: number): Promise<EntryList[]> {
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;
-        let data = this.entries.slice(startIndex, endIndex);
-        data = data.map(entry => ({
+        const data: Entry[] = this.entries.slice(startIndex, endIndex);
+        const list: EntryList[] = data.map(entry => ({
             id: entry.id,
             application_hostname: entry.application_hostname,
             timestamp: entry.timestamp,
             type: entry.type
         }))
 
-        /*return {
-            data,
-            page,
-            limit,
-            total: this.entries.length
-        }*/
-        return data;
+        return list;
     }
 
-    async findById(id: number): Promise<Entry> {
+    async findById(id: string): Promise<Entry | null> {
         return this.entries.find(entry => entry.id === id);
     }
 
@@ -102,7 +96,7 @@ export class EntryRepository implements IEntryRepository {
         return entry;
     }
 
-    async update(id: number, entryData: Partial<Entry>): Promise<Entry> {
+    async update(id: string, entryData: Partial<Entry>): Promise<Entry> {
         const index = this.entries.findIndex(entry => entry.id === id);
         if (index !== -1) {
             this.entries[index] = { ...this.entries[index], ...entryData };
@@ -111,7 +105,7 @@ export class EntryRepository implements IEntryRepository {
         return null
     }
 
-    async delete(id: number) {
+    async delete(id: string) {
         this.entries = this.entries.filter(entry => entry.id !== id);
     }
 
@@ -119,12 +113,13 @@ export class EntryRepository implements IEntryRepository {
         return this.entries.length;
     }
 
-    private generateId(): number {
+    private generateId(): string {
         if (this.entries.length === 0) {
-            return 1;
+            return "1";
         }
         const lastId = this.entries[this.entries.length - 1].id;
-        return lastId + 1;
+        const lastIdNum = parseInt(lastId, 10);
+        return (lastIdNum + 1).toString();
     }
     
 }

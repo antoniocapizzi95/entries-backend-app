@@ -1,0 +1,20 @@
+version: '3'
+services:
+  entries-backend-app:
+    container_name: entries-backend-app
+    build: .
+    ports:
+      - "3000:3000"
+    networks:
+      - entries-app-network
+  entries-backend-mongo:
+    container_name: entries-backend-mongo
+    image: mongo
+    ports:
+      - 27017:27017
+    networks:
+      - entries-app-network
+
+networks:
+  entries-app-network:
+    driver: bridge

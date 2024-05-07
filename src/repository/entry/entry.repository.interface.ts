@@ -3,9 +3,9 @@ import { Entry } from "../../models/entry.model";
 
 export interface IEntryRepository {
     findAll(page: number, limit: number): Promise<EntryList[]>
-    findById(id: number): Promise<Entry>
+    findById(id: string): Promise<Entry | null>
     create(entry: Entry): Promise<Entry>
-    update(id: number, entryData: Partial<Entry>): Promise<Entry>
-    delete(id: number): void
+    update(id: string, entryData: Partial<Entry>): Promise<Entry>
+    delete(id: string): void
     getCount(): Promise<number>
 }
