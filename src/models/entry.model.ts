@@ -1,7 +1,7 @@
 import { EntryTag } from "./entry-tag.model";
 
 export class Entry {
-    id: string;
+    id?: string;
     application_hostname: string;
     timestamp?: string;
     type: string;

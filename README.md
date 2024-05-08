@@ -1,73 +1,176 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# entries-backend-app
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Run the Application
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+To run the project locally, you will need to follow these steps:
 
-## Description
+1. Clone this repository.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+2. On project root create a ```.env``` file and copy the contents of the ```.env.sample``` file (already present in the repository).
 
-## Installation
+3. Make sure you have Docker and Docker Compose installed on your machine.
 
-```bash
-$ npm install
-```
+4. Run the following command to start the project:
 
-## Running the app
+    ```docker-compose up```
 
-```bash
-# development
-$ npm run start
+The project will start on the default port 3000.
 
-# watch mode
-$ npm run start:dev
+## Postman Collection
 
-# production mode
-$ npm run start:prod
-```
+In the repository's root folder, you will find a "postman" directory that contains a Postman collection. This collection allows you to test the project locally.
 
-## Test
+## API Endpoints
 
-```bash
-# unit tests
-$ npm run test
+The following sections provide details about the available endpoints, including the HTTP methods, request URLs, expected request bodies, and response bodies.
 
-# e2e tests
-$ npm run test:e2e
+### Base URL
 
-# test coverage
-$ npm run test:cov
-```
+All URLs referenced in the documentation have the following base (if you run project in local):
 
-## Support
+  http://localhost:3000
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Fetch All Entries
 
-## Stay in touch
+- **Method**: `GET`
+- **URL**: `/entries`
+- **Query Parameters**:
+  - `page`: The page number (integer)
+  - `limit`: The number of entries per page (integer)
+- **Success Response**:
+  - **Code**: 200 OK
+  - **Content Example**:
+    ```json
+    [
+        {
+            "id": "1",
+            "application_hostname": "new_app",
+            "timestamp": "2028-11-02T10:20:11.242Z",
+            "type": "WEB"
+        },
+        {
+            "id": 2,
+            "application_hostname": "old_app",
+            "timestamp": "2028-10-02T10:20:11.242Z",
+            "type": "MOBILE"
+        }
+    ]
+    ```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Get Entry by ID
 
-## License
+- **Method**: `GET`
+- **URL**: `/entries/:id`
+- **Success Response**:
+  - **Code**: 200 OK
+  - **Content Example**:
+    ```json
+    {
+        "id": "1",
+        "user": "Joe Smith",
+        "country": "UK",
+        "ip": "1.2.3.4",
+        "device": "Windows / Chrome 121.0",
+        "tags": [
+            {
+                "title": "ERROR",
+                "description": "Error description",
+                "color": "#F17567"
+            }
+        ],
+        "isDangerous": true,
+        "application_hostname": "new_app",
+        "timestamp": "2028-11-02T10:20:11.242Z",
+        "type": "WEB"
+    }
+    ```
 
-Nest is [MIT licensed](LICENSE).
+### Create a New Entry
+
+- **Method**: `POST`
+- **URL**: `/entries`
+- **Request Body Example**:
+  ```json
+  {
+      "application_hostname": "new_app",
+      "timestamp": "2029-01-01T12:00:00.000Z",
+      "type": "WEB",
+      "user": "New User",
+      "country": "USA",
+      "ip": "192.168.1.1",
+      "device": "MacOS / Safari",
+      "tags": [
+          {
+              "title": "NEW",
+              "description": "New entry tag",
+              "color": "#00FF00"
+          }
+      ],
+      "isDangerous": false
+  }
+  ```
+- **Success Response**:
+  - **Code**: 201 Created
+  - **Content Example**:
+    ```json
+  {
+      "id": "5",
+      "application_hostname": "new_app",
+      "timestamp": "2029-01-01T12:00:00.000Z",
+      "type": "WEB",
+      "user": "New User",
+      "country": "USA",
+      "ip": "192.168.1.1",
+      "device": "MacOS / Safari",
+      "tags": [
+          {
+              "title": "NEW",
+              "description": "New entry tag",
+              "color": "#00FF00"
+          }
+      ],
+      "isDangerous": false
+  }
+  ```
+
+  ### Update an Entry
+
+- **Method**: `PUT`
+- **URL**: `/entries/:id`
+- **Request Body Example**:
+  ```json
+  {
+    "user": "Updated User",
+    "country": "Canada"
+  }
+  ```
+- **Success Response**:
+  - **Code**: 200 OK
+  - **Content Example**:
+    ```json
+  {
+      "id": "5",
+      "application_hostname": "new_app",
+      "timestamp": "2029-01-01T12:00:00.000Z",
+      "type": "WEB",
+      "user": "Updated User",
+      "country": "Canada",
+      "ip": "192.168.1.1",
+      "device": "MacOS / Safari",
+      "tags": [
+          {
+              "title": "NEW",
+              "description": "New entry tag",
+              "color": "#00FF00"
+          }
+      ],
+      "isDangerous": false
+  }
+  ```
+
+  ### Delete an Entry
+
+- **Method**: `DELETE`
+- **URL**: `/entries/:id`
+- **Success Response**:
+  - **Code**: 204 No Content

@@ -5,7 +5,6 @@ import { Entry as EntryMongo, EntryDocument } from './schemas/entry.schema';
 import { IEntryRepository } from '../entry.repository.interface';
 import { EntryList } from '../../../models/entry-list.model';
 import { Entry } from '../../../models/entry.model';
-import { generateUUID } from '../../../utils/generate-uuid';
 
 @Injectable()
 export class EntryRepository implements IEntryRepository {
@@ -22,7 +21,6 @@ export class EntryRepository implements IEntryRepository {
     }
 
     async create(entryData: Entry): Promise<Entry> {
-        entryData.id = generateUUID();
         const createdEntry = new this.entryModel(entryData);
         const document = await createdEntry.save();
         return this.mapEntry(document);

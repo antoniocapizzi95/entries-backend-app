@@ -4,6 +4,7 @@ import { Entry } from '../models/entry.model';
 import { EntryRepository } from '../repository/entry/mongo/entry.repository';
 import { EntryListPagination } from '../models/entry-list-pagination.model';
 import { EntryList } from 'src/models/entry-list.model';
+import { generateUUID } from '../utils/generate-uuid';
 
 @Injectable()
 export class EntriesService {
@@ -21,6 +22,7 @@ export class EntriesService {
 
     async createEntry(entry: Entry): Promise<Entry> {
         entry.timestamp = new Date().toISOString();
+        entry.id = generateUUID();
         return this.entryRepository.create(entry);
     }
 
