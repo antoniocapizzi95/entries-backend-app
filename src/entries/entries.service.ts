@@ -27,6 +27,8 @@ export class EntriesService {
     }
 
     async updateEntry(id: string, entryData: Partial<Entry>): Promise<Entry> {
+        delete entryData?.id;
+        delete entryData?.timestamp;
         return this.entryRepository.update(id, entryData);
     }
 

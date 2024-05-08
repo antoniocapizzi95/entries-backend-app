@@ -20,6 +20,14 @@ The project will start on the default port 3000.
 
 In the repository's root folder, you will find a "postman" directory that contains a Postman collection. This collection allows you to test the project locally.
 
+## Testing
+
+Some unit tests have been developed for methods with logic.
+
+To run automated tests (developed with Jest), use the following command:
+
+    npm run test
+
 ## API Endpoints
 
 The following sections provide details about the available endpoints, including the HTTP methods, request URLs, expected request bodies, and response bodies.
@@ -93,7 +101,6 @@ All URLs referenced in the documentation have the following base (if you run pro
   ```json
   {
       "application_hostname": "new_app",
-      "timestamp": "2029-01-01T12:00:00.000Z",
       "type": "WEB",
       "user": "New User",
       "country": "USA",
@@ -116,7 +123,6 @@ All URLs referenced in the documentation have the following base (if you run pro
   {
       "id": "5",
       "application_hostname": "new_app",
-      "timestamp": "2029-01-01T12:00:00.000Z",
       "type": "WEB",
       "user": "New User",
       "country": "USA",

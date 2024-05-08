@@ -4,7 +4,7 @@
 		"name": "entries-backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "9669684",
-		"_collection_link": "https://web.postman.co/workspace/personal~42e9541e-707a-40fb-bab7-19602c374b8c/collection/9669684-a741f862-5c5b-4ede-885a-55dd272bfeac?source=collection_link"
+		"_collection_link": "https://red-flare-7491.postman.co/workspace/personal~42e9541e-707a-40fb-bab7-19602c374b8c/collection/9669684-a741f862-5c5b-4ede-885a-55dd272bfeac?action=share&source=collection_link&creator=9669684"
 	},
 	"item": [
 		{
@@ -42,7 +42,7 @@
 						{
 							"key": "id",
 							"value": "",
-							"uuid": "19603e74-a113-474f-983f-58ee446cb97c"
+							"uuid": "2cee649b-9819-4e0c-9f28-921d829dfd02"
 						}
 					]
 				}
@@ -57,12 +57,12 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"uuid": "95c24c0a-8aa7-4d9b-9c6c-daaa9b6ecd51"
+						"uuid": "2fec3377-7615-4755-bcde-94dc8f713dfc"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user\": \"Joe Smith\",\r\n    \"country\": \"UK\",\r\n    \"ip\": \"1.2.3.4\",\r\n    \"device\": \"Windows / Chrome 121.0\",\r\n    \"tags\": [\r\n        {\r\n            \"title\": \"ERROR\",\r\n            \"description\": \"This is a description for the ERROR tag lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n            \"color\": \"#F17567\"\r\n        }\r\n    ],\r\n    \"isDangerous\": true,\r\n    \"application_hostname\": \"new_app\",\r\n    \"timestamp\": \"2028-11-02T10:20:11.242Z\",\r\n    \"type\": \"WEB\"\r\n}"
+					"raw": "{\r\n    \"user\": \"Joe Smith\",\r\n    \"country\": \"UK\",\r\n    \"ip\": \"1.2.3.4\",\r\n    \"device\": \"Windows / Chrome 121.0\",\r\n    \"tags\": [\r\n        {\r\n            \"title\": \"ERROR\",\r\n            \"description\": \"This is a description for the ERROR tag lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n            \"color\": \"#F17567\"\r\n        }\r\n    ],\r\n    \"isDangerous\": true,\r\n    \"application_hostname\": \"new_app\",\r\n    \"type\": \"WEB\"\r\n}"
 				},
 				"url": {
 					"raw": "{{url}}/entries",
@@ -84,12 +84,12 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
-						"uuid": "1e6f4ef3-783a-4482-9d98-84a5b88dc1dc"
+						"uuid": "33d5fb53-3288-4daa-bfdf-190894246c11"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user\": \"Joe Smith\",\r\n    \"country\": \"UK\",\r\n    \"ip\": \"1.2.3.4\",\r\n    \"device\": \"Windows / Chrome 121.0\",\r\n    \"tags\": [\r\n        {\r\n            \"title\": \"ERROR\",\r\n            \"description\": \"This is a description for the ERROR tag lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n            \"color\": \"#F17567\"\r\n        }\r\n    ],\r\n    \"isDangerous\": true,\r\n    \"application_hostname\": \"new_app\",\r\n    \"timestamp\": \"2028-11-02T10:20:11.242Z\",\r\n    \"type\": \"WEB\"\r\n}"
+					"raw": "{\r\n    \"user\": \"Joe Smith\",\r\n    \"country\": \"UK\",\r\n    \"ip\": \"1.2.3.4\",\r\n    \"device\": \"Windows / Chrome 121.0\",\r\n    \"tags\": [\r\n        {\r\n            \"title\": \"ERROR\",\r\n            \"description\": \"This is a description for the ERROR tag lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\",\r\n            \"color\": \"#F17567\"\r\n        }\r\n    ],\r\n    \"isDangerous\": true,\r\n    \"application_hostname\": \"new_app\",\r\n    \"type\": \"WEB\"\r\n}"
 				},
 				"url": {
 					"raw": "{{url}}/entries/:id",
@@ -104,7 +104,7 @@
 						{
 							"key": "id",
 							"value": "",
-							"uuid": "1faeaeb6-3ebd-493c-a150-a5791ee8f6c8"
+							"uuid": "c6a1dbfb-251a-4e80-b05e-03be78ccc6fd"
 						}
 					]
 				}
